@@ -45,6 +45,14 @@ export default function Navbar() {
                   Login
                 </Link>
               </li>
+               <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  to="/createuser"
+                >
+                 SigUp
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

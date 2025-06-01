@@ -9,12 +9,13 @@ export default function home() {
     <div>
       <div>
         <Navbar />
-       <div> <Slides></Slides></div>
+       <div> <Slides></Slides> </div>
 
         {/* card ------*/}
-        <div>
+        <div className="m-3">
           <Card />
-          {/* <Card></Card> */}
+          <Card></Card>
+          <Card></Card>
         </div>
         <Footer></Footer>
       </div>
