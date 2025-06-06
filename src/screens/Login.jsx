@@ -2,9 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const navigate = useNavigate;
+
 
 export default function Login() {
+  const navigate = useNavigate();
   const [credential, setCredential] = useState({
     email: '',
     password: '',
@@ -38,10 +39,9 @@ export default function Login() {
     if (json.success) {
       localStorage.setItem('authtoken', json.authtoken); //local storage mai data store karna hai
       console.log(localStorage.getItem('authtoken'));
-       navigate('/');
-      alert ('Login successful');
+      navigate('/');
+      alert('Login successful');
       //redirect to home page
-     
     }
   };
   const onChange = (event) => {
