@@ -94,6 +94,7 @@ export default function Home() {
                           className="col-md-4 mb-3 col-12 col-lg-3"
                         >
                           <Card
+                          foodItem={filteredItem}
                             foodName={filteredItem.name}
                             options={filteredItem.options[0]}
                             imgSrc={filteredItem.img}

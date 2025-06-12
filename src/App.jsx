@@ -6,6 +6,8 @@ import Home from './screens/Home.jsx';
 import Login from './screens/Login.jsx';
 import SignUp  from './screens/SignUp.jsx';
 
+import {cartProvider} from './components/ContextReducer.jsx'
+
 
 
 import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css'
@@ -14,11 +16,14 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js';
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './components/ContextReducer.jsx';
 // import SignUp from './screens/SignUp.jsx';
 
 function App() {
   return (
-    <Router>
+    <CartProvider>   
+
+      <Router>
       <div>
         <Routes>
           <Route
@@ -36,6 +41,8 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </CartProvider>
+    
   );
 }
 
