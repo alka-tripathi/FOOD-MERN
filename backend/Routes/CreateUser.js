@@ -8,9 +8,9 @@ const { body, validationResult } = require('express-validator');
 
 const bcrypt = require('bcryptjs');
 
-const secert="mynameisalka";
+const secert = 'mynameisalka';
 
-const jwt=require("jsonwebtoken")
+const jwt = require('jsonwebtoken');
 
 //Ye ek API ka example hai jo database ke saath kaam karti hai.
 
@@ -80,7 +80,10 @@ router.post(
           .status(400)
           .json({ error: 'Try login  with correct credetials' });
       }
-      const pwdCompare = await bcrypt.compare(req.body.password,userdata.password);
+      const pwdCompare = await bcrypt.compare(
+        req.body.password,
+        userdata.password
+      );
       if (!pwdCompare) {
         //here password is the key which is differnt from other
         return res
@@ -88,14 +91,13 @@ router.post(
           .json({ error: 'Try login  with correct password credetials' });
       }
       //if password is correct then we will create a token
-      const data={
-        user:{
-          id:userdata.id,
-        }
-
-      }
-      const authtoken=jwt.sign(data,secert);
-      return res.json({ success: true ,authtoken});
+      const data = {
+        user: {
+          id: userdata.id,
+        },
+      };
+      const authtoken = jwt.sign(data, secert);
+      return res.json({ success: true, authtoken });
     } catch (err) {
       console.log(' Error:', err.message);
       res.json({ success: false });
