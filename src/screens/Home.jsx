@@ -4,6 +4,12 @@ import Footer from '../components/Footer';
 import Card from '../components/Card';
 import Slides from '../components/Slides';
 
+
+
+// const API_URL = import.meta.env.;
+// fetch(`${API_URL}/api/foodData`)
+
+
 export default function Home() {
   //seach
 
@@ -21,10 +27,6 @@ export default function Home() {
       },
     });
     response = await response.json();
-
-    //console.log(response[0],response[1]);
-
-    //console.log(response);
 
     setFoodCat(response[1]);
     setFoodItem(response[0]);
