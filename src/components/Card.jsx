@@ -38,7 +38,7 @@ export default function Card(props) {
       size: size,
       img: props.foodItem.img,
     });
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div

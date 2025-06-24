@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+require('dotenv').config();
 
 //import schema
 const User = require('../models/User.js');
@@ -8,7 +9,8 @@ const { body, validationResult } = require('express-validator');
 
 const bcrypt = require('bcryptjs');
 
-const secert = 'mynameisalka';
+// const secert = 'mynameisalka';
+const secert=process.env.SECERT
 
 const jwt = require('jsonwebtoken');
 
@@ -76,9 +78,10 @@ router.post(
       let { email, password } = req.body;
       let userdata = await User.findOne({ email }); //return data from this email
       if (!userdata) {
-        return res
-          .status(400)
-          .json({ error: 'Try login  with correct credetials' });
+        return res.status(400).json({
+          success: false,
+          error: 'Try login  with correct credetials',
+        });
       }
       const pwdCompare = await bcrypt.compare(
         req.body.password,

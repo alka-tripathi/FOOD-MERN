@@ -37,6 +37,7 @@ export default function Login() {
     //     }
 
     if (json.success) {
+      localStorage.setItem("userEmail",credential.email);
       localStorage.setItem('authtoken', json.authtoken); //local storage mai data store karna hai
       console.log(localStorage.getItem('authtoken'));
       navigate('/');

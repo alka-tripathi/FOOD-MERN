@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
 const CartStateContext = createContext();
 const CartDispatchContext = createContext();
@@ -19,6 +19,29 @@ const reducer = (state, action) => {
           size: action.size,
         },
       ];
+    // case 'REMOVE':
+    //   let arr = [...state];
+    //   arr.find((food, index) => {
+    //     if (food.id === action.id) {
+    //       console.log(
+    //         food.qty,
+    //         parseInt(action.qty),
+    //         action.price + food.price
+    //       );
+    //       arr[index] = {
+    //         ...food,
+    //         qty: parseInt(action.qty) + food.qty,
+    //         price: action.price + food.price,
+    //       };
+    //     }
+    //     return arr;
+    //   });
+    //   return arr;
+    case 'REMOVE':
+      return state.filter((item) => item.id !== action.id);
+    case 'DROP':
+      let emptyarray = [];
+      return emptyarray;
 
     default:
       console.log('Error in reducer');
@@ -27,8 +50,19 @@ const reducer = (state, action) => {
   }
 };
 
+//  Get cart from localStorage initially
+const getInitialCart = () => {
+  const savedCart = localStorage.getItem('cart');
+  return savedCart ? JSON.parse(savedCart) : [];
+};
+
 export const CartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, []); //[ initail state]
+  const [state, dispatch] = useReducer(reducer, getInitialCart()); //[ initail state]
+
+  //  Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(state));
+  }, [state]);
   return (
     <CartDispatchContext.Provider value={dispatch}>
       <CartStateContext.Provider value={state}>

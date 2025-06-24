@@ -1,5 +1,5 @@
-// import React from 'react'
-// import ReactDom from 'react-dom'
+import React from 'react';
+import ReactDom from 'react-dom';
 
 // const MODAL_STYLES = {
 //   position: 'fixed',
@@ -36,9 +36,6 @@
 //   )
 // }
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-
 const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
@@ -49,9 +46,9 @@ const MODAL_STYLES = {
   zIndex: 1000,
   height: '90%',
   width: '90%',
-  borderRadius: '10px',
-  padding: '20px',
-  overflowY: 'auto',
+  // borderRadius: '10px',
+  // padding: '20px',
+  // overflowY: 'auto',
 };
 
 const OVERLAY_STYLES = {
@@ -62,23 +59,20 @@ const OVERLAY_STYLES = {
   right: 0,
   bottom: 0,
   backgroundColor: 'rgba(0, 0, 0, .7)',
-  zIndex: 999,
+  zIndex: 1000,
 };
 
 export default function Modal({ children, onClose }) {
-  return ReactDOM.createPortal(
+  return ReactDom.createPortal(
     <>
-      <div
-        style={OVERLAY_STYLES}
-        onClick={onClose}
-      />
+      <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         <button
           className="btn bg-danger fs-4"
+        
           style={{
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
+            marginLeft: '90%',
+            marginTop: '-35px',
           }}
           onClick={onClose}
         >

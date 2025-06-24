@@ -1,7 +1,9 @@
 const express = require('express');
+require('dotenv').config
 
 const app = express();
-const port = 5000;
+// const port = 5000;
+const port=process.env.PORT;
 
 const mongodb = require('./db.js');
 mongodb();
@@ -24,6 +26,8 @@ app.get('/', (req, res) => {
 
 app.use('/api', require('./Routes/CreateUser.js'));
 app.use('/api', require('./Routes/DisplayData.js'));
+app.use('/api', require('./Routes/OrderData.js'));
+// app.use('/api',require(''))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

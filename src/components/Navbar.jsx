@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import Badge from 'react-bootstrap/Badge';
 import Modal from '../Modal';
 import { useCart, useDispatchCart } from './ContextReducer';
+import Cart from '../screens/Cart';
 
 export default function Navbar() {
+
   const [cartView, setCartView] = useState(false);
   const navigate = useNavigate();
 
@@ -100,7 +102,7 @@ export default function Navbar() {
                   </Badge>
                 </div>
                 {cartView ? (
-                  <Modal onClose={() => setCartView(false)}></Modal>
+                  <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal>
                 ) : null}
                 {/* //logout pe click ho to home page pe aa gye */}
                 <div
